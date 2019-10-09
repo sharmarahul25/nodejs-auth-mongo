@@ -5,6 +5,7 @@ const secretkey = "^#@23&*#@!#@&^0K3)NJ}";
 
 module.exports = {
   login: async function (req, res) {
+	console.log("??",req.body );
 	let { email, password } = _.pick(req.body, ['email', 'password']);
 	email = email.toLowerCase();
 	try {
@@ -40,13 +41,17 @@ module.exports = {
 			'password',
 			'firstName',
 			'lastName',
+			'isAdmin'
 		]);
+		console.log("??? -  ",userObj );
         userObj.password = cryptoPass.saltHashPassword(userObj.password);
         try {
-            let user = await Models.User.create(userObj);
+			console.log("the password is",userObj )
+			let user = await Models.User.create(userObj);
+			console.log("user",user)
             res.status(200).json(user);
 		} catch(error){
-            return res.status(500).json({ result: 'error', message: "DB Error while creating user" })
+            return res.status(500).json({ result: error, message: "DB Error while creating user" })
 		}
 	}
 };

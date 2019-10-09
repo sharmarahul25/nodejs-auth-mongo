@@ -24,6 +24,10 @@ UserSchema = new mongoose.Schema({
   password:{
     type: String,
     required: false
+  },
+  isAdmin:{
+    type: Boolean,
+    default: false,
   }
 });
 

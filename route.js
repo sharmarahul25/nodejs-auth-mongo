@@ -35,6 +35,7 @@ ensureAuthentic = function(req,res,next){
 
 Router.post('/login', Controllers.Users.login);
 Router.post('/signup', Controllers.Users.signUp);
-Router.get('/listItems',ensureAuthentic ,Controllers.Items.listItems);
+Router.post('/addItem', Controllers.Items.addItem);
+Router.get('/listItems' ,Controllers.Items.listItems);
 
 module.exports = Router;

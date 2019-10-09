@@ -1,16 +1,22 @@
 mongoose = require('mongoose');
 
 ItemSchema = new mongoose.Schema({
-    ItemName: {
+    name: {
         type: String,
         required: true
     },
-    ItemId: {
-        type: String,
-        required: false
+    price: {
+        type: Number,
+        required: true
     },
+    description: String,
+    type: String,
+    image:{
+        type: String,
+        default: ""
+    }
+
 });
 
-
-Users = mongoose.model('Item', ItemSchema);
-module.exports = Users;
+Items = mongoose.model('Item', ItemSchema);
+module.exports = Items;
